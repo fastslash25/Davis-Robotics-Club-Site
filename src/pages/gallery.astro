@@ -3,20 +3,17 @@ import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL;
 
-// Replace src values with real paths like /images/photo1.jpg
 const photos = [
-  { src: '', alt: 'Rover testing in the field', category: 'Competition', size: 'large' },
-  { src: '', alt: 'Team working in the lab', category: 'Lab Life', size: 'small' },
-  { src: '', alt: 'Soldering session', category: 'Workshops', size: 'small' },
-  { src: '', alt: 'Drone test flight', category: 'Projects', size: 'large' },
-  { src: '', alt: 'PCB assembly', category: 'Electrical', size: 'small' },
-  { src: '', alt: 'Team photo at competition', category: 'Competition', size: 'small' },
-  { src: '', alt: 'Robot arm demo', category: 'Projects', size: 'small' },
-  { src: '', alt: 'Outreach workshop with kids', category: 'Outreach', size: 'large' },
-  { src: '', alt: 'Night in the lab', category: 'Lab Life', size: 'small' },
-  { src: '', alt: 'Competition award ceremony', category: 'Competition', size: 'small' },
-  { src: '', alt: 'Mechanical assembly session', category: 'Lab Life', size: 'small' },
-  { src: '', alt: 'Software sprint session', category: 'Software', size: 'small' },
+  { src: `${base}images/Combat%20Robotics/02D83855747A3AA3DD194A3B6D85FD95.png`, alt: 'Combat robotics test build', category: 'Combat Robotics', size: 'large' },
+  { src: `${base}images/Combat%20Robotics/CAD84AA3-8542-4606-A5DC-B878B2DB9862.jpg`, alt: 'Combat robotics team photo', category: 'Combat Robotics', size: 'small' },
+  { src: `${base}images/Drone/image.png`, alt: 'Drone platform in testing', category: 'Drone', size: 'large' },
+  { src: `${base}images/Drone/aerial.png`, alt: 'Aerial drone platform', category: 'Drone', size: 'small' },
+  { src: `${base}images/Mini%20bot/IMG_0396.png`, alt: 'Mini bot line follower setup', category: 'Mini Bot', size: 'large' },
+  { src: `${base}images/Mini%20bot/IMG_0393.png`, alt: 'Mini bot team demo', category: 'Mini Bot', size: 'small' },
+  { src: `${base}images/Quadruped/image.png`, alt: 'Quadruped robot prototype', category: 'Quadruped', size: 'small' },
+  { src: `${base}images/2025%20Engineering%20Club%20Day/IMG_0448.png`, alt: 'Engineering Club Day showcase', category: 'Outreach', size: 'large' },
+  { src: `${base}images/2025%20Engineering%20Club%20Day/WhiteBot.png`, alt: 'Engineering Club Day robot display', category: 'Outreach', size: 'small' },
+  { src: `${base}images/2025%20Engineering%20Club%20Day/YellowBot.png`, alt: 'Engineering Club Day yellow bot', category: 'Outreach', size: 'small' },
 ];
 
 const categories = ['All', ...new Set(photos.map(p => p.category))];
@@ -48,7 +45,7 @@ const categories = ['All', ...new Set(photos.map(p => p.category))];
       <div class="gallery-grid" id="galleryGrid">
         {photos.map(p => (
           <div class="gallery-item" data-cat={p.category} data-size={p.size}>
-            <div class="img-placeholder gallery-img">[ {p.alt} ]</div>
+            <img src={p.src} alt={p.alt} class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-overlay">
               <p class="gallery-caption">{p.alt}</p>
               <span class="gallery-cat">{p.category}</span>
@@ -120,7 +117,7 @@ const categories = ['All', ...new Set(photos.map(p => p.category))];
 .gallery-item[data-size="large"] .gallery-img { height: 340px; }
 .gallery-item[data-size="small"] .gallery-img { height: 200px; }
 
-.gallery-img { width: 100%; border-radius: 6px; }
+.gallery-img { width: 100%; border-radius: 6px; object-fit: cover; display: block; }
 
 .gallery-overlay {
   position: absolute;
