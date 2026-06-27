@@ -39,23 +39,6 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- ── STATS ── -->
-  <section class="stats-bar">
-    <div class="container stats-inner">
-      {[
-        { n: '60+', label: 'Active Members' },
-        { n: '8',   label: 'Active Projects' },
-        { n: '12',  label: 'Competitions Entered' },
-        { n: '6',   label: 'Years Running' },
-      ].map(s => (
-        <div class="stat">
-          <p class="stat-n">{s.n}</p>
-          <p class="stat-label">{s.label}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <!-- ── FEATURED PROJECTS ── -->
   <section class="section">
     <div class="container">
