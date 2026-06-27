@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="About" description="Learn about the UC Davis Robotics Club — our mission, history, and values.">
@@ -18,7 +20,9 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Banner image -->
   <div class="container">
-    <div class="img-placeholder about-banner">[ wide team / lab photo ]</div>
+    <div class="about-banner">
+      <img src={`${base}images/Combat%20Robotics/CAD84AA3-8542-4606-A5DC-B878B2DB9862.jpg`} alt="UC Davis Robotics Club lab team photo" loading="lazy" decoding="async" />
+    </div>
   </div>
 
   <!-- Mission -->
@@ -38,7 +42,9 @@ import Layout from '../layouts/Layout.astro';
           research-adjacent projects. Membership is free and open to all students.
         </p>
       </div>
-      <div class="img-placeholder" style="height:360px; border-radius:8px;">[ mission photo ]</div>
+      <div class="about-mission-photo">
+        <img src={`${base}images/image%20(1).png`} alt="Robotics club mission photo" loading="lazy" decoding="async" />
+      </div>
     </div>
   </section>
 
@@ -94,6 +100,25 @@ import Layout from '../layouts/Layout.astro';
   height: 420px;
   border-radius: 8px;
   margin-bottom: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.about-banner img,
+.about-mission-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-mission-photo {
+  height: 360px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .about-grid {
