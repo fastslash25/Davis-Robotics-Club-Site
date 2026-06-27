@@ -20,8 +20,16 @@ const subteamLeads = [
 ];
 
 const advisors = [
-  { name: 'Prof. Jennifer Park', dept: 'Mechanical & Aerospace Engineering', img: '' },
-  { name: 'Prof. David Osei', dept: 'Electrical & Computer Engineering', img: '' },
+  {
+    name: 'Zhaodan Kong',
+    dept: 'Mechanical & Aerospace Engineering',
+    img: `${base}images/kong.jpg`,
+  },
+  {
+    name: 'Stavros Vougioukas',
+    dept: 'Biological and Agricultural Engineering',
+    img: `${base}images/vougioukas.jpg`,
+  },
 ];
 ---
 
@@ -85,7 +93,13 @@ const advisors = [
       <div class="advisors-list">
         {advisors.map(a => (
           <div class="advisor-row">
-            <div class="advisor-photo img-placeholder">[ {a.name} ]</div>
+            <div class="advisor-photo">
+              {a.img ? (
+                <img src={a.img} alt={a.name} loading="lazy" decoding="async" />
+              ) : (
+                <div class="img-placeholder">[ {a.name} ]</div>
+              )}
+            </div>
             <div>
               <h3 class="advisor-name">{a.name}</h3>
               <p class="advisor-dept">{a.dept}</p>
@@ -172,7 +186,15 @@ const advisors = [
   width: 72px;
   height: 72px;
   border-radius: 50%;
+  overflow: hidden;
   flex-shrink: 0;
+}
+
+.advisor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .advisor-name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
