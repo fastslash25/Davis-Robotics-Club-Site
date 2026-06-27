@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const upcoming = [
   { title: 'Intro to ROS2', date: 'Oct 12, 2025', time: '3–5 PM', location: 'Kemper 1065', level: 'Beginner' },
   { title: 'SolidWorks for Robots', date: 'Oct 19, 2025', time: '2–4 PM', location: 'Bainer 1132', level: 'Beginner' },
@@ -79,7 +81,7 @@ const past = [
         If you have expertise in a robotics-adjacent topic, we'd love to have you teach.
         Members and non-members alike are welcome to propose a session.
       </p>
-      <a href="/contact" class="btn btn-primary">Get in Touch</a>
+      <a href={`${base}contact`} class="btn btn-primary">Get in Touch</a>
     </div>
   </section>
 

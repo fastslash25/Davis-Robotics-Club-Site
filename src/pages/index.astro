@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Home">
@@ -18,8 +19,8 @@ import Layout from '../layouts/Layout.astro';
         come together to push the limits of autonomous systems.
       </p>
       <div class="hero-actions">
-        <a href="/join" class="btn btn-primary">Join the Club</a>
-        <a href="/projects" class="btn btn-outline">See Our Work</a>
+        <a href={`${base}join`} class="btn btn-primary">Join the Club</a>
+        <a href={`${base}projects`} class="btn btn-outline">See Our Work</a>
       </div>
     </div>
 
@@ -60,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
           { title: 'Robotic Arm',      tag: 'Manipulation', desc: 'A 6-DOF arm capable of sub-millimeter precision for pick-and-place tasks.' },
           { title: 'Drone Platform',   tag: 'Aerial', desc: 'Custom quadrotor designed for computer vision and precision agriculture research.' },
         ].map(p => (
-          <a href="/projects" class="project-card">
+          <a href={`${base}projects`} class="project-card">
             <div class="project-img img-placeholder" style="height:200px;">[ {p.title} image ]</div>
             <div class="project-info">
               <span class="project-tag">{p.tag}</span>
@@ -70,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
         ))}
       </div>
-      <a href="/projects" class="btn btn-outline" style="margin-top:2.5rem;">All Projects →</a>
+      <a href={`${base}projects`} class="btn btn-outline" style="margin-top:2.5rem;">All Projects →</a>
     </div>
   </section>
 
@@ -86,7 +87,7 @@ import Layout from '../layouts/Layout.astro';
       ))}
     </div>
     <div class="container" style="margin-top:1.5rem;">
-      <a href="/gallery" class="btn btn-outline">Full Gallery →</a>
+      <a href={`${base}gallery`} class="btn btn-outline">Full Gallery →</a>
     </div>
   </section>
 
@@ -98,7 +99,7 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="section-title" style="margin-bottom:1rem;">Ready to build something?</h2>
         <p class="section-body">No experience required — just curiosity. We welcome all majors and skill levels.</p>
       </div>
-      <a href="/join" class="btn btn-primary">Apply Now</a>
+      <a href={`${base}join`} class="btn btn-primary">Apply Now</a>
     </div>
   </section>
 

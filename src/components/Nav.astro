@@ -1,12 +1,13 @@
 ---
+const base = import.meta.env.BASE_URL;
 const links = [
-  { href: '/',           label: 'Home' },
-  { href: '/about',      label: 'About' },
-  { href: '/projects',   label: 'Projects' },
-  { href: '/workshops',  label: 'Workshops' },
-  { href: '/gallery',    label: 'Gallery' },
-  { href: '/team',       label: 'Team' },
-  { href: '/contact',    label: 'Contact' },
+  { href: base,           label: 'Home' },
+  { href: `${base}about`,      label: 'About' },
+  { href: `${base}projects`,   label: 'Projects' },
+  { href: `${base}workshops`,  label: 'Workshops' },
+  { href: `${base}gallery`,    label: 'Gallery' },
+  { href: `${base}team`,       label: 'Team' },
+  { href: `${base}contact`,    label: 'Contact' },
 ];
 
 const current = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -14,7 +15,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <nav class="nav">
   <div class="nav-inner container">
-    <a href="/" class="nav-logo">
+    <a href={base} class="nav-logo">
       <span class="nav-logo-mark">⬡</span>
       <span>UC Davis <strong>Robotics</strong></span>
     </a>
@@ -33,7 +34,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
         </li>
       ))}
       <li>
-        <a href="/join" class="btn btn-primary nav-cta">Join Us</a>
+        <a href={`${base}join`} class="btn btn-primary nav-cta">Join Us</a>
       </li>
     </ul>
   </div>
