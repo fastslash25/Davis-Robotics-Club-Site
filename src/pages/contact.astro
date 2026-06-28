@@ -1,168 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const joinUrl = `${import.meta.env.BASE_URL}join`;
 ---
 
-<Layout title="Contact" description="Get in touch with UC Davis Robotics Club.">
-
+<Layout title="Join the Club" description="Join and contact UC Davis Robotics Club.">
+  <script define:vars={{ joinUrl }}>
+    window.location.replace(joinUrl);
+  </script>
   <section class="page-hero section">
     <div class="container">
-      <p class="section-label">Reach out</p>
-      <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Contact Us</h1>
+      <p class="section-label">Membership</p>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Join the Club</h1>
       <p class="section-body">
-        Questions about joining, sponsorship, partnerships, or just want to say hi?
-        We'd love to hear from you.
+        Contact details have moved to the Join Us page.
       </p>
+      <a href={joinUrl} class="btn btn-primary" style="margin-top:2rem;">Go to Join Us</a>
     </div>
   </section>
-
-  <section class="section">
-    <div class="container contact-layout">
-
-      <!-- Contact info -->
-      <div class="contact-info">
-        <p class="section-label">Find us</p>
-        <div class="gold-rule"></div>
-
-        <div class="info-blocks">
-          <div class="info-block">
-            <p class="info-label">Location</p>
-            <p class="info-val">University of California, Davis<br />Davis, CA 95616</p>
-          </div>
-          <div class="info-block">
-            <p class="info-label">Meeting Times</p>
-            <p class="info-val">General Meeting times TBD for upcoming Fall 2026.</p>
-          </div>
-          <div class="info-block">
-            <p class="info-label">Follow Us</p>
-            <div class="social-links">
-              <a href="https://www.instagram.com/davisrobotics/" target="_blank" rel="noopener" class="social-link">Instagram</a>
-              <a href="https://discord.gg/XA3rYvC9A9" target="_blank" rel="noopener" class="social-link">Discord</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact form (replace with Formspree or similar) -->
-      <div class="contact-form-wrap">
-        <p class="section-label">Send a message</p>
-        <div class="gold-rule"></div>
-
-        <!--
-          To enable this form, sign up at https://formspree.io and replace
-          YOUR_FORM_ID with your actual form ID.
-          Example: action="https://formspree.io/f/xabcdefg"
-        -->
-        <div class="form-placeholder">
-          <p>
-            Join the club Discord to stay up to date with meetings, subteams, and events.
-          </p>
-          <a href="https://discord.gg/XA3rYvC9A9" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:0.75rem;">
-            Join Discord →
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Sponsor note temporarily disabled.
-  <section class="section" style="background:var(--surface); border-top:1px solid var(--border);">
-    <div class="container" style="max-width:640px;">
-      <p class="section-label">Sponsorship</p>
-      <h2 class="section-title" style="font-size:2rem;">Partner with us</h2>
-      <p class="section-body" style="margin-bottom:2rem;">
-        We welcome industry partners who want to support student robotics at UC Davis.
-        Sponsors gain visibility, recruiting access, and the satisfaction of funding
-        something genuinely cool.
-      </p>
-      <a href="#" class="btn btn-primary">Sponsorship Inquiries</a>
-    </div>
-  </section>
-  -->
-
 </Layout>
-
-<style>
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: flex-start;
-}
-
-.info-blocks {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 0.5rem;
-}
-
-.info-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.4rem;
-}
-
-.info-val {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-}
-
-a.info-val { color: var(--text); transition: color 0.15s; }
-a.info-val:hover { color: var(--gold); }
-
-.social-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.25rem;
-}
-
-.social-link {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  padding: 0.3em 0.9em;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text-muted);
-  transition: all 0.15s;
-}
-
-.social-link:hover { border-color: var(--gold); color: var(--gold); }
-
-.form-placeholder {
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: 8px;
-  padding: 2rem;
-  margin-top: 0.5rem;
-}
-
-.form-placeholder p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
-.form-placeholder strong { color: var(--text); }
-
-.code-block {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 1rem;
-  margin-top: 1rem;
-  overflow-x: auto;
-}
-
-.code-block code {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  white-space: pre;
-}
-
-@media (max-width: 720px) {
-  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-}
-</style>

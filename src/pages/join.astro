@@ -41,7 +41,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- How to join steps -->
   <section class="section">
-    <div class="container">
+    <div class="container how-it-works">
       <p class="section-label">The process</p>
       <h2 class="section-title">How it works</h2>
       <div class="steps">
@@ -58,6 +58,39 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact details -->
+  <section class="section">
+    <div class="container contact-layout">
+      <div>
+        <p class="section-label">Find us</p>
+        <h2 class="section-title">Contacts</h2>
+        <div class="info-blocks">
+          <div class="info-block">
+            <p class="info-label">Location</p>
+            <p class="info-val">University of California, Davis<br />Davis, CA 95616</p>
+          </div>
+          <div class="info-block">
+            <p class="info-label">Meeting Times</p>
+            <p class="info-val">General Meeting times TBD for upcoming Fall 2026.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Stay connected</p>
+        <div class="join-contact-card">
+          <p>
+            Join the club Discord to stay up to date with meetings, subteams, and events.
+          </p>
+          <div class="contact-actions">
+            <a href="https://discord.gg/XA3rYvC9A9" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+            <a href="https://www.instagram.com/davisrobotics/" target="_blank" rel="noopener" class="btn btn-outline">Instagram</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -87,12 +120,21 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+.how-it-works {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .steps {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 2.5rem;
   max-width: 680px;
+  width: 100%;
+  text-align: left;
 }
 
 .step-card {
@@ -171,5 +213,62 @@ import Layout from '../layouts/Layout.astro';
   border-radius: 3px;
   font-size: 0.85em;
   color: var(--gold);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+.info-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.info-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.info-val {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.join-contact-card {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+.join-contact-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 720px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
 </style>

@@ -1,13 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+
 const base = import.meta.env.BASE_URL;
 const links = [
   { href: base,           label: 'Home' },
   { href: `${base}about`,      label: 'About' },
   { href: `${base}projects`,   label: 'Projects' },
-  { href: `${base}workshops`,  label: 'Workshops' },
+  { href: `${base}events`,     label: 'Events' },
   { href: `${base}gallery`,    label: 'Gallery' },
   { href: `${base}team`,       label: 'Team' },
-  { href: `${base}contact`,    label: 'Contact' },
 ];
 
 const current = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -16,8 +17,13 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 <nav class="nav">
   <div class="nav-inner container">
     <a href={base} class="nav-logo">
-      <span class="nav-logo-mark">⬡</span>
-      <span>UC Davis <strong>Robotics</strong></span>
+      <Image
+        src={`${base}images/Logos/Full%20logo.png`}
+        alt="UC Davis Robotics Club"
+        class="nav-logo-img"
+        width="4048"
+        height="1308"
+      />
     </a>
 
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -68,9 +74,15 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
   white-space: nowrap;
   color: var(--text);
   margin-right: auto;
+  min-width: 0;
 }
-.nav-logo strong { font-weight: 700; color: var(--gold); }
-.nav-logo-mark { font-size: 1.3rem; color: var(--gold); line-height: 1; }
+
+.nav-logo-img {
+  width: auto;
+  height: 44px;
+  max-width: min(280px, 48vw);
+  object-fit: contain;
+}
 
 .nav-links {
   display: flex;
@@ -110,6 +122,10 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 @media (max-width: 860px) {
   .nav-toggle { display: flex; }
+  .nav-logo-img {
+    height: 38px;
+    max-width: 220px;
+  }
   .nav-links {
     display: none;
     position: absolute;

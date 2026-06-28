@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const futureEvents = [
+  {
+    title: 'OpenCV Workshop',
+    date: 'TBA',
+    time: 'TBA',
+    location: '📍 TBA',
+    tag: 'Workshop',
+    desc: 'A hands-on introduction to computer vision workflows for robotics.',
+  },
+  {
+    title: 'General Club Meeting',
+    date: 'Oct 12, 2025',
+    time: '3-5 PM',
+    location: '📍 UC Davis campus',
+    tag: 'Meeting',
+    desc: 'Meet the team, hear project updates, and find a build group to join.',
+  },
+  {
+    title: 'Project Work Session',
+    date: 'Every Monday',
+    time: '6pm',
+    location: '📍 Kemper 1065',
+    tag: 'Build',
+    desc: 'Open build time for combat robotics, drones, mini bots, and new project ideas.',
+  },
+  {
+    title: 'New Member Orientation',
+    date: 'Next quarter',
+    time: 'TBA',
+    location: '📍 Zoom + Kemper',
+    tag: 'Orientation',
+    desc: 'A first-session overview for students who want to get involved with the club.',
+  },
+];
+
+const pastWorkshops = [
+  { title: 'Soldering Fundamentals', img: '[ soldering workshop ]' },
+  { title: 'Arduino Crash Course', img: '[ arduino workshop ]' },
+  { title: 'PID Control Theory', img: '[ PID workshop ]' },
+  { title: 'Intro to SLAM', img: '[ SLAM workshop ]' },
+];
+---
+
+<Layout title="Events" description="Future events and past workshops from UC Davis Robotics Club.">
+  <section class="page-hero section">
+    <div class="container">
+      <p class="section-label">Upcoming</p>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Events</h1>
+      <p class="section-body">
+        Future club meetings, workshops, and project sessions. Check back for confirmed
+        dates and room numbers as they are announced.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Upcoming</p>
+      <h2 class="section-title">Future Events</h2>
+      <div class="event-list">
+        {futureEvents.map(event => (
+          <article class="event-row">
+            <div class="event-date-col">
+              <p class="event-date">{event.date}</p>
+              <p class="event-time">{event.time}</p>
+            </div>
+            <div class="event-info">
+              <h3 class="event-title">{event.title}</h3>
+              <p class="event-location">{event.location}</p>
+            </div>
+            <span class="event-badge">{event.tag}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section events-band">
+    <div class="container">
+      <p class="section-label">Archive</p>
+      <h2 class="section-title">Past Workshops</h2>
+      <div class="past-grid">
+        {pastWorkshops.map(workshop => (
+          <div class="past-card">
+            <div class="img-placeholder past-img">{workshop.img}</div>
+            <p class="past-title">{workshop.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container events-cta">
+      <p class="section-label">Stay updated</p>
+      <h2 class="section-title" style="font-size:2rem;">Want event announcements?</h2>
+      <p class="section-body">
+        Join the club Discord or contact the team for the latest meeting times and event details.
+      </p>
+      <div class="cta-actions">
+        <a href="https://discord.gg/XA3rYvC9A9" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+        <a href={`${base}join`} class="btn btn-outline">Join Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.event-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.4rem 1.75rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.event-row:last-child { border-bottom: none; }
+.event-row:hover { background: var(--surface-2); }
+
+.event-date {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.event-time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.event-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.event-location {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.event-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25em 0.75em;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: rgba(201,168,76,0.1);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.25);
+}
+
+.events-band {
+  background: var(--surface);
+  border-block: 1px solid var(--border);
+}
+
+.past-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.past-card { display: flex; flex-direction: column; gap: 0.75rem; }
+.past-img {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 6px;
+}
+.past-title { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+
+.events-cta {
+  max-width: 680px;
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 650px) {
+  .event-row {
+    grid-template-columns: 1fr;
+  }
+
+  .event-date-col {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .event-badge {
+    width: fit-content;
+  }
+
+  .past-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+</style>
